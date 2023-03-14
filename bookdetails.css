@@ -1,0 +1,62 @@
+/* General styles */
+body {
+    background-color: #f1f1f1;
+    font-family: Arial, sans-serif;
+    color: #333;
+}
+
+/* Header styles */
+header {
+    background-color: #333;
+    color: #fff;
+}
+
+/* Container styles */
+.container {
+    width: 1366px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 2fr 2fr;
+}
+
+/* Book details styles */
+.book-details {
+    align-items: center;
+}
+
+.book-image {
+    width: 100%;
+}
+
+/* Book info styles */
+.book-info {
+    padding-left: 20px;
+}
+
+/* Book title styles */
+#book-title {
+    font-size: 2em;
+    margin-bottom: 10px;
+}
+
+
+/* Book author styles */
+#book-author {
+    font-size: 1.2em;
+    margin-bottom: 20px;
+}
+
+/* Book summary styles */
+#book-summary {
+    font-size: 1.2em;
+    margin-bottom: 20px;
+}
+
+/* Buy from Amazon button styles */
+#buy-amazon {
+    background-color: #ffa500;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+}

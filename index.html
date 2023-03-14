@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Book Listing Website</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  </head>
+  <body>
+    <header>
+      <nav>
+        <div class="logo">Logo</div>
+        <ul>
+          <li>Menu 1</li>
+          <li>Menu 2</li>
+          <li>Menu 3</li>
+        </ul>
+        <form>
+          <label for="rating-filter">Filter by rating:</label>
+          <select id="rating-filter">
+            <option value="">All</option>
+            <option value="5">5 stars</option>
+            <option value="4">4 stars or more</option>
+            <option value="3">3 stars or more</option>
+            <option value="2">2 stars or more</option>
+            <option value="1">1 star or more</option>
+          </select>
+        </form>
+      </nav>
+    </header>
+    <main>
+      <div class="container">
+        <!-- The books will be added here -->
+      </div>
+    </main>
+    <footer>
+      <div class="pagination">
+        <button id="prev" disabled>Prev</button>
+        <span id="page-number">1</span>
+        <button id="next">Next</button>
+      </div>
+    </footer>
+    <script src="app.js"></script>
+    <script src="data.json"></script>
+  </body>
+</html>

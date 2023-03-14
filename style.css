@@ -1,0 +1,197 @@
+:root {
+    --primary-color: #000;
+    --secondary-color: #fff;
+    --tertiary-color: #ffc107;
+    --font-primary: Montserrat;
+    --font-secondary: 'Montserrat', sans-serif;
+}
+
+body {
+    background-image: linear-gradient(to right, #f8eecf 0%,#f8eecf 100%);
+    font-family: var(--font-secondary);
+    margin: 0;
+    padding: 0;
+}
+
+.glass-shape {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.glass-shape::before,
+.glass-shape::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+.glass-shape::before {
+    transform: skewY(-15deg);
+}
+
+.glass-shape::after {
+    transform: skewY(15deg);
+}
+
+
+header {
+    display: flex;
+    align-items: center;
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    padding: 0rem 1rem;
+}
+
+.logo {
+    flex: 1;
+    font-size: 2rem;
+    font-weight: normal;
+    text-align: left;
+    font-family: var(--font-primary);
+}
+
+nav {
+    display: flex;
+    align-items: center;
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    margin-right: 0px; /* This will push the menu items to the right */
+}
+
+nav li {
+    padding: 2rem;
+    font-size: 1rem;
+    font-family: var(--font-primary);
+    font-weight: thin
+}
+
+nav form {
+    margin-right: 0px; /* This will push the filter to the right */
+}
+
+nav label, nav select {
+    font-size: 1rem;
+    color: var(--secondary-color);
+    font-family: var(--font-primary);
+}
+
+nav select {
+    background-color: #fff;
+    color: #000;
+    padding: 0.5rem;
+    border: none;
+    font-family: var(--font-primary);
+}
+
+.container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 20px;
+    overflow-y: auto; /* This will enable scrolling for the container */
+    justify-content: center; /* This centers the container element */
+    max-width: 1366px; /* This sets the maximum width of the container */
+    margin: 0 auto; /* This centers the container horizontally */
+    padding: 1rem;
+}
+
+.book {
+    background-color: #fff;
+    padding: 20px;
+    border: 1px solid #ccc;
+}
+
+/* Star Rating */
+.rating {
+    display: flex;
+}
+
+.rating i {
+    color: #ccc;
+    font-size: 2rem;
+}
+
+.rating .checked {
+    color: var(--tertiary-color);
+}
+
+footer {
+    display: flex;
+    align-items: center;
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    padding: 0.5rem 1rem;
+}
+
+.pagination {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.pagination button {
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+    border: none;
+    padding: 0.5rem 1rem;
+    margin: 0 0.5rem;
+    font-size: 1.5rem;
+    font-family: var(--font-primary);
+    transition: background-color 0.2s ease-in-out;
+}
+
+.pagination button:hover {
+    background-color: var(--tertiary-color);
+}
+
+.pagination button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+#page-number {
+    font-size: 1.5rem;
+    margin: 0 0.5rem;
+    font-family: var(--font-primary);
+}
+
+img {
+    width: 60%; /* Increase the width by 50% */
+    height: auto; /* Maintain aspect ratio */
+    max-height: 800px; /* Set a maximum height */
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+    nav ul {
+        flex-wrap: wrap;
+    }
+    nav ul li {
+        width: 100%;
+        margin-right: 0;
+    }
+    .container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    }
+    
+    @media (max-width: 480px) {
+    .container {
+    grid-template-columns: 1fr;
+    }
+    nav form {
+    display: none; /* Hide the filter on small screens */
+    }
+    }
+    
+    

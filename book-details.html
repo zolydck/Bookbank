@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Book Details</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script>
+        if ('speechSynthesis' in window) {
+          // Speech synthesis is supported
+        } else {
+          // Speech synthesis is not supported
+        }
+      </script>
+      
+</head>
+
+<body>
+    <header>
+        <nav>
+            <button id="back-btn">Back</button>
+            <ul>
+                <li>Menu 1</li>
+                <li>Menu 2</li>
+                <li>Menu 3</li>
+            </ul>
+          
+        </nav>
+      </header>
+    <div class="container">
+        <div class="book-details">
+            <div class="book-image">
+                <img id="book-img" src="" alt="">
+            </div>
+            <div class="book-info">
+                <h1 id="book-title"></h1>
+                <p id="book-author"></p>
+                <div id="book-rating"></div>
+                <p id="book-summary"></p>
+                <a id="buy-amazon" href="" target="_blank">Buy from Amazon</a>
+            </div>
+        </div>
+        
+        <button id="prev-book-btn">Previous</button>
+        <button id="next-book-btn">Next</button>
+    </div>
+    <script>
+        // Get the book id from the URL query string
+        const urlParams = new URLSearchParams(window.location.search);
+        const bookId = urlParams.get('book');
+        
+        document.querySelector('#back-btn').addEventListener('click', () => {
+            window.location.href = "index.html";
+        });
+
+        // next page and previouspage, not working
+        document.querySelector('#prev-book-btn').addEventListener('click', () => {
+            const currentBookId = urlParams.get('book');
+            const currentBookIndex = allBooks.findIndex(b => b.id == currentBookId);
+        if(currentBookIndex > 0) {
+            const prevBook = allBooks[currentBookIndex - 1];
+            window.location.href = `book-details.html?book=${prevBook.id}`;
+            }
+        });
+        document.querySelector('#next-book-btn').addEventListener('click', () => {
+            const currentBookId = urlParams.get('book');
+            const currentBookIndex = allBooks.findIndex(b => b.id == currentBookId);
+        if(currentBookIndex < allBooks.length - 1) {
+            const nextBook = allBooks[currentBookIndex + 1];
+            window.location.href = `book-details.html?book=${nextBook.id}`;
+            }
+        });
+
+        // Get the data from the JSON file or service
+        fetch('data.json')
+            .then(response => response.json())
+            .then(data => {
+                // Find the book with the matching id
+                const book = data.books.find(b => b.id == bookId);
+                 // Create a new speech synthesis utterance
+                  const utterance = new SpeechSynthesisUtterance(book.summary);
+                 // Speak the summary
+                 speechSynthesis.speak(utterance);
+                
+                 // Populate the HTML with the book details
+                document.querySelector('#book-img').src = book.img;
+                document.querySelector('#book-img').alt = book.title;
+                document.querySelector('#book-title').innerText = book.title;
+                document.querySelector('#book-author').innerText = book.author;
+                document.querySelector('#book-summary').innerText = book.summary;
+                const rating = document.querySelector('#book-rating');
+                for (let i = 0; i < 5; i++) {
+                    const star = document.createElement('i');
+                    star.classList.add('fas', 'fa-star');
+                    if (i < book.rating) {
+                        star.classList.add('checked');
+                    }
+                    rating.appendChild(star);
+                }
+
+            })
+            .catch(error => console.log(error));
+    </script>
+</body>
+
+</html>
